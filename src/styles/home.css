@@ -1,0 +1,7 @@
+.fila {
+    display:flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    scrollbar-color: rgb(108, 34, 34) black;
+}

@@ -1,18 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			learnMoreObject: [],
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -37,6 +27,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+
+			putLearnMoreObject: (object) => {
+				
+				setStore({ learnMoreObject: object })
+			},
+
+			addFavorite: (listElement) => {
+				if(listElement){
+				let favoriteList = getStore().favorites
+				favoriteList.push(listElement)
+				 let uniqueFavoriteList = [...new Set(favoriteList)]
+				setStore({favorites: uniqueFavoriteList})
+			}
+			},
+
+			deleteFavorite: (name) => {
+				let copyFavorite = getStore().favorites
+				copyFavorite.map((listElements,index)=>{
+					if(listElements === name){
+						copyFavorite.splice(index, 1)
+					}
+				})
+				
+				setStore({favorites: copyFavorite})
 			}
 		}
 	};
