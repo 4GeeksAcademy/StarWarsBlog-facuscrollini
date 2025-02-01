@@ -27,7 +27,7 @@ export const Navbar = () => {
 					<ul className="dropdown-menu dropdown-menu-lg-end text-white" style={list.length != 0 ? {backgroundColor: "#ff9a00"} : {backgroundColor: "#ffc107"}}>
 						{list.length != 0 ? list.map((item)=>{
 							return(
-								 <li><p className="list-group-item favorite px-2 d-flex justify-content-between">{item}{/*<span onClick={() =>actions.deleteFavorite(item)}><i className="fa-solid fa-trash"></i></span>*/} </p></li>)
+								 <li><p className="list-group-item favorite px-2 d-flex justify-content-between">{item}<span onClick={() =>actions.deleteFavorite(item)}><i className="fa-solid fa-trash"></i></span> </p></li>)
 						}) : <li> <p  className="px-2" ><i className="fa-solid fa-exclamation"></i> Add favorites</p></li>
 						
 }

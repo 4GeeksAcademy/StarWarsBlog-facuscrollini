@@ -8,19 +8,16 @@ export const CardPeople = ({ urlPerson, personId }) => {
     const { actions,store } = useContext(Context)
     const [liked, setLiked] = useState(false)
     
-    const [listaFavoritos, setListaFavoritos] = useState(store.favorites)
-    
 
     const handleLike = (itemName) => {
         if(liked) {
             actions.deleteFavorite(itemName)
-            setLiked(false)
         } else if(!liked){
             actions.addFavorite(itemName)
-            setLiked(true)
         }
 
     }
+
 
     const getPersonInfo = async () => {
         try {
@@ -42,6 +39,7 @@ export const CardPeople = ({ urlPerson, personId }) => {
     }, [])
 
 
+
     return (<>
         <div className="carta card col-3  my-4 p-2 bg-dark border border-danger vivo">
             <div className="position-relative">
@@ -52,7 +50,7 @@ export const CardPeople = ({ urlPerson, personId }) => {
                     </div>
                 </Link>
             </div>
-            <div className=" ms-2 text-white  mt-2">
+            <div className="carta-texto ms-2 text-white  mt-2">
                 <div className="d-flex justify-content-between border-bottom border-light mb-2">
                     <div className="align-bottom">
                         <p className="lexend fs-3 text-white card-title mb-0">{dataPerson.name}</p>
@@ -61,7 +59,7 @@ export const CardPeople = ({ urlPerson, personId }) => {
                     <button type="button" className="btn" onClick={() =>
                      {
                          handleLike(dataPerson.name)
-                          }} ><span><i className={`${liked ? "fa-solid like fs-5" : "fa-regular no-like"} fa-heart `}></i></span></button>
+                          }} ><span><i className={`${store.favorites.includes(dataPerson.name) ? "fa-solid like fs-5" : "fa-regular no-like"} fa-heart `}></i></span></button>
                 </div>
                 <div className="into-light">
                         <p> <b>Height</b>: {dataPerson.height}</p>

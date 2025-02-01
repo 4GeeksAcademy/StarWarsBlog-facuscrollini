@@ -5,7 +5,7 @@ import { Context } from "../store/appContext";
 export const CardVehicles = ({urlVehicle, vehicleId}) => {
 
 const [dataVehicle, setDataVehicle] = useState({})
-const {actions} = useContext(Context)
+const {actions, store} = useContext(Context)
 const [liked, setLiked] = useState(false)
     
 
@@ -51,7 +51,7 @@ return (<>
                     </div>
                 </Link>
             </div>
-            <div className=" ms-2 text-white  mt-2">
+            <div className="carta-texto ms-2 text-white  mt-2">
                 <div className="d-flex justify-content-between border-bottom border-light mb-2">
                     <div className="align-bottom">
                         <p className="lexend fs-3 text-white card-title mb-0">{dataVehicle.name}</p>
@@ -60,7 +60,7 @@ return (<>
                     <button type="button" className="btn" onClick={() =>
                      {
                          handleLike(dataVehicle.name)
-                          }} ><span><i className={`${liked ? "fa-solid like fs-5" : "fa-regular no-like"} fa-heart `}></i></span></button>
+                          }} ><span><i className={`${store.favorites.includes(dataVehicle.name) ? "fa-solid like fs-5" : "fa-regular no-like"} fa-heart `}></i></span></button>
                 </div>
                 <div className="into-light ">
                         <p> <b>Max speed</b>:  {dataVehicle.max_atmosphering_speed}</p>
