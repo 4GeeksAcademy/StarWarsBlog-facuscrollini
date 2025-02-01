@@ -12,8 +12,10 @@ export const CardPeople = ({ urlPerson, personId }) => {
     const handleLike = (itemName) => {
         if(liked) {
             actions.deleteFavorite(itemName)
+            setLiked(false)
         } else if(!liked){
             actions.addFavorite(itemName)
+            setLiked(true)
         }
 
     }

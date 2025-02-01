@@ -13,7 +13,7 @@ export const Navbar = () => {
 
 
 	return (
-		<nav className="navbar navbar-light bg-black border-bottom border-warning bg-opacity-75 px-5 mb-3">
+		<nav className="navbar navbar-light bg-black border-bottom border-warning bg-opacity-75 px-5 mb-3 position-sticky">
 			<Link to="/">
 				<div >
 					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2560px-Star_Wars_Logo.svg.png" style={{ height: "7vw" }} />
@@ -21,8 +21,8 @@ export const Navbar = () => {
 			</Link>
 			<div className="ml-auto">
 				<div className="btn-group">
-					<button type="button" className="btn text-warning  border border-warning rounded dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-						Favorites
+					<button type="button" className="btn text-warning  border border-warning rounded dropdown-toggle position-relative" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+						Favorites {list.length != 0? <span className="position-absolute top-0 start-100 badge rounded translate-middle bg-danger">{list.length}</span> : ""}
 					</button>
 					<ul className="dropdown-menu dropdown-menu-lg-end text-white" style={list.length != 0 ? {backgroundColor: "#ff9a00"} : {backgroundColor: "#ffc107"}}>
 						{list.length != 0 ? list.map((item)=>{
