@@ -15,6 +15,7 @@ export const VehicleInfo = () => {
       const response = await fetch(`https://www.swapi.tech/api/vehicles/${id}`)
       const data = await response.json()
       setVehicleInfo(data.result.properties)
+      
     }
     catch (error) {
       alert("Error getting vehicle information from API")
@@ -24,6 +25,7 @@ export const VehicleInfo = () => {
 
   useEffect(() => {
     getVehicleInfo(id)
+    
   }, [])
 
   return (
@@ -50,7 +52,7 @@ export const VehicleInfo = () => {
                 <p className="info-v card-text">{vehicleInfo.passengers}</p>
                 <p>Length</p>
                 <hr />
-                <p className="info-v card-text">{vehicleInfo[length]}</p>
+                <p className="info-v card-text">{vehicleInfo.length}</p>
                 <p>Cargo capacity</p>
                 <hr />
                 <p className="info-v card-text">{vehicleInfo.cargo_capacity}</p>
